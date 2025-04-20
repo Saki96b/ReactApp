@@ -1,8 +1,6 @@
 name: 🚀 CI/CD – Build & Push to Docker Hub
 
 on:
-  push:
-    branches: [main] # or "master", depending on your default branch
   workflow_dispatch:  # 👈 Manual trigger enabled here  
 
 jobs:
