@@ -1,0 +1,26 @@
+name: 🚀 CI/CD – Build & Push to Docker Hub
+
+on:
+  push:
+    branches: [main] # or "master", depending on your default branch
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🐳 Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: 🏗️ Build Docker image
+        run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/react-todo-app
+          docker build -t $IMAGE:latest .
+
+      - name: 🚀 Push Docker image
+        run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/react-todo-app
+          docker push $IMAGE:latest

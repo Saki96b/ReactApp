@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>📝 To-Do App</h1>
+      <h1>📝 To-Do Apps</h1>
       <TodoList tasks={tasks} addTask={addTask} removeTask={removeTask} />
     </div>
   );
